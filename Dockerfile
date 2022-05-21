@@ -88,3 +88,6 @@ ENTRYPOINT [ "/entrypoint.sh" ]
 # docker run -d -p 8086:80 -p 8022:22 --name web php-fpm-nginx-alpine:20220521
 # docker exec -it web sh
 # curl http://localhsot
+# docker login
+# docker tag php-fpm-nginx-alpine:20220522 900528/php-fpm-nginx-alpine:latest
+# docker push 900528/php-fpm-nginx-alpine:latest
