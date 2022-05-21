@@ -61,6 +61,7 @@ RUN apk add supervisor \
 
 # Define mountable directories.
 VOLUME ["/etc/supervisord.d", "/var/log/"]
+# 把当前目录supervisor文件下的所有内容[不包括supervisor文件夹]添加到容器/etc/目录下
 COPY ./supervisor/ /etc/
 
 #ADD-CRONTABS
@@ -74,5 +75,16 @@ VOLUME /var/log/cron
 #添加启动脚本
 WORKDIR /usr/share/nginx/html
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
-# 参考网址 https://blog.csdn.net/shenlichuang/article/details/106626382
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod 777 /entrypoint.sh
+ENTRYPOINT [ "/entrypoint.sh" ]
+# CMD ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
+# 参考网址
+# https://segmentfault.com/a/1190000018415600
+# https://blog.csdn.net/shenlichuang/article/details/106626382
+# https://segmentfault.com/a/1190000039823931?sort=newest
+# docker build --no-cache -t php-fpm-nginx-alpine:20220521 .
+# docker images
+# docker run -d -p 8086:80 --name web [IMAGE ID]
+# docker exec -it [CONTAINER ID] sh
+# curl http://localhsot

@@ -1,0 +1,12 @@
+.DS_Store
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.local
+*.bak
+*__pycache__*
+.project
+.settings
