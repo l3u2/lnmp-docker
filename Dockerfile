@@ -85,6 +85,6 @@ ENTRYPOINT [ "/entrypoint.sh" ]
 # https://segmentfault.com/a/1190000039823931?sort=newest
 # docker build --no-cache -t php-fpm-nginx-alpine:20220521 .
 # docker images
-# docker run -d -p 8086:80 --name web [IMAGE ID]
-# docker exec -it [CONTAINER ID] sh
+# docker run -d -p 8086:80 -p 8022:22 --name web php-fpm-nginx-alpine:20220521
+# docker exec -it web sh
 # curl http://localhsot
